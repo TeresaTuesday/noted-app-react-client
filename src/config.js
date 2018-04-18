@@ -1,5 +1,6 @@
 
 export default {
+  MAX_ATTACHMENT_SIZE: 5000000,
   s3: {
     REGION: "us-west-2",
     BUCKET: "note-taking-app-uploads"
@@ -14,4 +15,4 @@ export default {
     APP_CLIENT_ID: "12gibfpq0a9mu3rig2psucmbkl",
     IDENTITY_POOL_ID: "us-west-2:2439789d-a753-41f1-a0c7-8e6b4826fb23"
   }
-};
+}
