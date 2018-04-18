@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Auth } from 'aws-amplify'
 import {
   HelpBlock,
   FormGroup,
@@ -8,7 +9,7 @@ import {
 import LoaderButton from '../components/LoaderButton'
 import './Signup.css'
 
-export default class Signup extends Component {
+export default class extends Component {
   constructor(props) {
     super(props);
     
@@ -43,17 +44,38 @@ export default class Signup extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true })
+  
+    try {
+      const newUser = await Auth.signUp({
+        username: this.state.email,
+        password: this.state.password
+      });
+      this.setState({
+        newUser
+      });
+    } catch (e) {
+      alert(e.message)
+    }
     
-    this.setState({ newUser: "test" });
-    
-    this.setState({ isLoading: false });
+    this.setState({ isLoading: false })
   }
   
   handleConfirmationSubmit = async event => {
     event.preventDefault();
     
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true })
+    
+    try {
+      await Auth.confirmSignUp(this.state.email, this.state.confirmationCode)
+      await Auth.signIn(this.state.email, this.state.password)
+    
+      this.props.userHasAuthenticated(true)
+      window.location.replace("/")
+    } catch (e) {
+      alert(e.message);
+      this.setState({ isLoading: false })
+    }
   }
   
   renderConfirmationForm() {
