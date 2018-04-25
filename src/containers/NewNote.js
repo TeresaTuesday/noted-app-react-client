@@ -6,6 +6,8 @@ import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import LoaderButton from '../components/LoaderButton'
 import config from '../config'
 import './NewNote.css'
+//import UploaderWindow from './UploaderWindow'
+
 
 export default class NewNote extends Component {
   constructor(props) {
@@ -32,6 +34,10 @@ export default class NewNote extends Component {
   handleFileChange = event => {
     this.file = event.target.files[0];
   }
+  
+  // handleUploadClick = async event => {
+  //
+  // }
   
   handleSubmit = async event => {
     event.preventDefault();
@@ -92,7 +98,21 @@ export default class NewNote extends Component {
             loadingText="Creating…"
           />
         </form>
+        {/*<div>*/}
+          {/*<ListGroupItem*/}
+            {/*// key="new"*/}
+            {/*// href="/notes/new"*/}
+            {/*// onClick={this.handleNoteClick}*/}
+            {/*// onClick={<UploaderWindow />}*/}
+          {/*>*/}
+            {/*<UploaderWindow/>*/}
+            {/*<h4>*/}
+              {/*<b>{"\uFF0B"}</b> Upload file*/}
+            {/*</h4>*/}
+          {/*</ListGroupItem>*/}
+        {/*</div>*/}
       </div>
+      
     );
   }
 }

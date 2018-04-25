@@ -30,3 +30,8 @@
 .Home .lander div a:first-child {
     margin-right: 20px;
 }
+
+body {
+    background-image: url("../NB-paper.jpg");
+    background-size: 100%;
+}

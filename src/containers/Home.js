@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { API } from 'aws-amplify'
 import './Home.css'
+import Youtube from './Youtube'
 
 export default class Home extends Component {
   constructor(props) {
@@ -56,6 +57,7 @@ export default class Home extends Component {
               <b>{"\uFF0B"}</b> Create a new note
             </h4>
           </ListGroupItem>
+          
     );
   }
   
@@ -71,6 +73,9 @@ export default class Home extends Component {
         <ListGroup>
           {!this.state.isLoading && this.renderNotesList(this.state.notes)}
         </ListGroup>
+          <div>
+            <Youtube />
+          </div>
       </div>
     );
   }
